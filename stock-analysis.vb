@@ -104,8 +104,9 @@ Sub CalculateYearlyChange(ws As Worksheet, from_row As Long, to_row As Long, row
 End Sub
 
 Sub CalculatePercentChange(ws As Worksheet, from_row As Long, to_row As Long, row_index As Long)
-    ws.Cells(row_index, 11) = ((ws.Cells(to_row, 6).Value - ws.Cells(from_row, 3).Value) / ws.Cells(from_row, 3).Value)
-    ws.Cells(row_index, 11).NumberFormat = "0.00%"
+    If ws.Cells(from_row, 3).Value <> 0 Then
+        ws.Cells(row_index, 11) = ((ws.Cells(to_row, 6).Value - ws.Cells(from_row, 3).Value) / ws.Cells(from_row, 3).Value)
+        ws.Cells(row_index, 11).NumberFormat = "0.00%"
+    End If
+    
 End Sub
-
-
